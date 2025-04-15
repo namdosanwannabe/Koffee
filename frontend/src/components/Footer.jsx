@@ -6,11 +6,11 @@ import { Github, Instagram } from 'lucide-react';
 function Footer() {
     return (
         <>
-            <footer className='py-16 w-full flex bg-primary-dark text-white' >
-                <div className='sm:mx-auto flex flex-col md:flex-row items-start md:items-center gap-10 md:gap-32 px-6'>
+            <footer className='py-12 sm:py-16 w-full flex bg-primary-dark text-white' >
+                <div className='sm:mx-auto flex flex-col md:flex-row items-start gap-10 md:gap-32 px-6'>
 
                     {/* Left */}
-                    <div className='flex flex-col gap-5'>
+                    <div className='flex flex-col gap-4'>
                         <div className='flex items-center gap-3'>
                             <img src={Logo} alt='Koffee Logo' className='w-12 h-12' />
                             <p className='text-2xl font-bold'>Koffee</p>
@@ -19,8 +19,12 @@ function Footer() {
                             Good Vibes & Great Coffee, Always!
                         </p>
                         <div className='flex gap-3'>
-                            <Github />
-                            <Instagram />
+                            <a href='https://github.com/namdosanwannabe' target='_blank'>
+                                <Github />
+                            </a>
+                            <a href='https://www.instagram.com/achikochi_/' target='_blank'>
+                                <Instagram />
+                            </a>
                         </div>
                     </div>
 

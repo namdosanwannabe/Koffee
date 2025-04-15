@@ -4,13 +4,13 @@ import { ShoppingCart } from 'lucide-react';
 
 const Header = () => {
     return (
-        <header className='fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white border-b-[1px] border-slate-200'>
+        <header className='fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white'>
             <div className='mx-auto max-w-7xl h-24'>
                 <div className='h-full flex justify-between items-center mx-8'>
-                    <div className='flex items-center gap-3'>
+                    <a href='/' className='flex items-center gap-3'>
                         <img src={Logo} alt='Koffee Logo' className='w-12 h-12' />
                         <p className='text-black text-2xl font-bold '>Koffee</p>
-                    </div>
+                    </a>
                     <nav className='flex gap-8 font-medium text-based text-black leading-relaxed'>
                         <a href='#'>Explore</a>
                         <a href='#'>Store</a>
