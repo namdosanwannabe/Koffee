@@ -6,8 +6,13 @@ import { Github, Instagram } from 'lucide-react';
 function Footer() {
     return (
         <>
-            <footer className='py-12 sm:py-16 w-full flex bg-primary-dark text-white' >
-                <div className='sm:mx-auto flex flex-col md:flex-row items-start gap-10 md:gap-32 px-6'>
+            <footer
+                className='py-12 sm:py-16 w-full flex bg-primary-dark text-white' >
+                <motion.div
+                    initial={{ opacity: 0, filter: "blur(10px)" }}
+                    whileInView={{ opacity: 1, filter: "blur(0px)" }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className='sm:mx-auto flex flex-col md:flex-row items-start gap-10 md:gap-32 px-6'>
 
                     {/* Left */}
                     <div className='flex flex-col gap-4'>
@@ -56,7 +61,7 @@ function Footer() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </footer>
 
             <motion.div
