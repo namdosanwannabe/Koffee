@@ -10,6 +10,6 @@ This project is for learning purposes, focusing on MongoDB, Express, React, and 
 
 - React 🏗 – Component-based UI library for seamless development
 
-- MongoDB + Express (Backend) – API and database handling (if applicable)
+- MongoDB + Express (Backend) – API and database handling
 
 - ESLint ✅ – Code quality and consistency
