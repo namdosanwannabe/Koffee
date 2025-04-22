@@ -12,6 +12,7 @@ function Footer() {
                     initial={{ opacity: 0, filter: "blur(10px)" }}
                     whileInView={{ opacity: 1, filter: "blur(0px)" }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
+                    viewport={{ once: true }}
                     className='sm:mx-auto flex flex-col md:flex-row items-start gap-10 md:gap-32 px-6'>
 
                     {/* Left */}
