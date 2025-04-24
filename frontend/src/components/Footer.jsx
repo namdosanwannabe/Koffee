@@ -36,7 +36,7 @@ function Footer() {
 
                     {/* Right */}
                     <div className='flex flex-col sm:flex-row gap-10 md:gap-20'>
-                        <div className='flex flex-col gap-5'>
+                        <div className='flex flex-col gap-4'>
                             <p className='font-semibold text-lg'>About</p>
                             <div className='flex flex-col gap-3 font-light text-base'>
                                 <a href='#'>Menu</a>
@@ -44,7 +44,7 @@ function Footer() {
                                 <a href='#'>News & Blog</a>
                             </div>
                         </div>
-                        <div className='flex flex-col gap-5'>
+                        <div className='flex flex-col gap-4'>
                             <p className='font-semibold text-lg'>Company</p>
                             <div className='flex flex-col gap-3 font-light text-base'>
                                 <a href='#'>How we work</a>
@@ -53,7 +53,7 @@ function Footer() {
                                 <a href='#'>FAQ</a>
                             </div>
                         </div>
-                        <div className='flex flex-col gap-5'>
+                        <div className='flex flex-col gap-4'>
                             <p className='font-semibold text-lg'>Address</p>
                             <div className='flex flex-col gap-3 font-light text-base'>
                                 <a href='#'>Bataan, Philippines</a>

@@ -19,7 +19,7 @@ const Tabs = ({ tabs, defaultTab = 0, }) => {
                         <button
                             tabIndex={-1}
                             key={index}
-                            className={`relative text-lg font-medium ease-out transition-all duration-300 ${activeTab === index ? 'text-primary-dark' : 'hover:text-primary-light'}`}
+                            className={`relative flex-1 xs:flex-none text-lg font-medium ease-out transition-all duration-300 ${activeTab === index ? 'text-primary-dark' : 'hover:text-primary-light'}`}
                             onClick={() => handleActiveTab(index)}
                         >
                             <span className='block mb-1 px-2'>{tab.label}</span>

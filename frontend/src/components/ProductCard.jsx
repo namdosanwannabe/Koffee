@@ -5,7 +5,7 @@ const ProductCard = ({ title, price, image, onClick }) => {
     const imageControls = useAnimation();
 
     const imageVariants = {
-        hidden: { opacity: 0, y: -50, filter: "blur(10px)" },
+        hidden: { opacity: 0, y: -30, filter: "blur(10px)" },
         visible: {
             opacity: 1,
             y: 0,

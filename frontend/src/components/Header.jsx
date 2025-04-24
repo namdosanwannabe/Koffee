@@ -1,12 +1,33 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion'
 import Logo from '../assets/logo/koffee-logo.png'
 import { ShoppingCart } from 'lucide-react';
 
 const Header = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+        const hash = location.hash;
+
+        if (hash) {
+            const element = document.querySelector(hash);
+            if (element) {
+                const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: elementPosition - 80,
+                        behavior: "smooth",
+                    });
+                }, 300);
+            }
+        }
+    }, [location]);
+
     return (
         <header
-            className='fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white'>
+            className='fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/50'>
             <motion.div
                 initial={{ opacity: 0, filter: "blur(10px)" }}
                 animate={{ opacity: 1, filter: "blur(0px)" }}
@@ -18,8 +39,8 @@ const Header = () => {
                         <p className='text-black text-2xl font-bold '>Koffee</p>
                     </a>
                     <nav className='flex gap-8 font-medium text-based text-black leading-relaxed'>
-                        <a href='#'>Explore</a>
-                        <a href='#'>Store</a>
+                        <a href='/#explore'>Explore</a>
+                        <a href='store'>Store</a>
                         <a href='#'>About Us</a>
                         <button>
                             <ShoppingCart size={24} fill='#006241' className='text-primary' />
