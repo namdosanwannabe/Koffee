@@ -27,7 +27,7 @@ const Header = () => {
 
     return (
         <header
-            className='fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/50'>
+            className='fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/50 border-b border-gray-100'>
             <motion.div
                 initial={{ opacity: 0, filter: "blur(10px)" }}
                 animate={{ opacity: 1, filter: "blur(0px)" }}
@@ -41,7 +41,7 @@ const Header = () => {
                     <nav className='flex gap-8 font-medium text-based text-black leading-relaxed'>
                         <a href='/#explore'>Explore</a>
                         <a href='store'>Store</a>
-                        <a href='#'>About Us</a>
+                        <a href='about'>About Us</a>
                         <button>
                             <ShoppingCart size={24} fill='#006241' className='text-primary' />
                         </button>

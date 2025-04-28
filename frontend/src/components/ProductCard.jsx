@@ -37,7 +37,7 @@ const ProductCard = ({ title, price, image, onClick }) => {
                 viewport={{ once: true }}
             />
 
-            <div className='flex flex-col gap-2'>
+            <div className='flex flex-col gap-2 text-center'>
                 <p className='uppercase text-sm font-medium leading-normal'>{title}</p>
                 <p className='text-[32px] font-bold leading-normal'>₱{price}.00</p>
             </div>

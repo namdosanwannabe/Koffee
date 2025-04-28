@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 import Button from '../components/Button'
 import Tabs from '../components/Tabs'
-import ProductCard from '../components/ProductCard'
+import ProductContainer from '../components/ProductContainer'
 import { fetchProductByCategory } from '../services/productService'
 
 import HeroMain from '../assets/hero/hero-section-image.png'
@@ -10,19 +10,18 @@ import FloatingLeft from '../assets/hero/floating-left-element.png'
 import FloatingRight from '../assets/hero/floating-right-element.png'
 
 const Home = () => {
-
     const [products, setProducts] = useState([]);
     const [tab, setTab] = useState('Hot Coffee');
 
     const TabContent = [
         {
             label: 'Hot Coffee',
-            content: <ProductContainer products={products} />,
+            content: <ProductContainer products={products} count={3} />,
             onClick: () => setTab('Hot Coffee')
         },
         {
             label: 'Cold Coffee',
-            content: <ProductContainer products={products} />,
+            content: <ProductContainer products={products} count={3} />,
             onClick: () => setTab('Cold Coffee')
         },
     ];
@@ -134,34 +133,3 @@ const Home = () => {
 }
 
 export default Home
-
-const ProductContainer = ({ products }) => {
-
-    if (!products || products.length === 0) {
-        return <p>No products found.</p>;
-    }
-
-    const limitedProducts = products.slice(0, 3);
-
-    return (
-        <motion.div
-            className='grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-6'
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={{
-                hidden: { opacity: 0, y: 50 },
-                visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.2 } }
-            }}>
-            {
-                limitedProducts.map((product, index) => (
-                    <ProductCard
-                        key={index}
-                        title={product?.name}
-                        image={product?.image_url}
-                        price={product?.price} />
-                ))
-            }
-        </motion.div>
-    )
-}

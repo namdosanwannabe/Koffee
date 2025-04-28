@@ -7,7 +7,7 @@ function Footer() {
     return (
         <>
             <footer
-                className='py-12 sm:py-16 w-full flex bg-primary-dark text-white' >
+                className='py-8 xs:py-12 sm:py-16 w-full flex bg-primary-dark text-white' >
                 <motion.div
                     initial={{ opacity: 0, filter: "blur(10px)" }}
                     whileInView={{ opacity: 1, filter: "blur(0px)" }}
