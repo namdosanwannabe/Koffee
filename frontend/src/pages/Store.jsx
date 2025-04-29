@@ -38,8 +38,8 @@ const Store = () => {
     }, [tab])
 
     return (
-        <div className='mx-auto max-w-5xl pt-8'>
-            <div className=' mx-8'>
+        <div className='mx-auto max-w-5xl pt-8 xs:pt-12'>
+            <div className='mx-8'>
                 <motion.h1
                     initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
                     animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}

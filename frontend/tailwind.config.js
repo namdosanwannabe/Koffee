@@ -9,6 +9,10 @@ export default {
             colors: {
                 black: '#171717',
 
+                gray: {
+                    light: '#707070'
+                },
+
                 primary: {
                     DEFAULT: '#006241',
                     dark: '#1E3932',

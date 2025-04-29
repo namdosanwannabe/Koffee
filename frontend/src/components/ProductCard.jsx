@@ -2,6 +2,7 @@ import React from 'react'
 import { motion, useAnimation } from 'framer-motion'
 
 const ProductCard = ({ title, price, image, onClick }) => {
+
     const imageControls = useAnimation();
 
     const imageVariants = {

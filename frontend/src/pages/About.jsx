@@ -6,7 +6,7 @@ import Image from '../assets/about/about-element.png'
 const About = () => {
     return (
         <>
-            <div className='mx-auto max-w-2xl pt-8'>
+            <div className='mx-auto max-w-2xl pt-8 xs:pt-12'>
                 <motion.div
                     initial="hidden"
                     whileInView="visible"

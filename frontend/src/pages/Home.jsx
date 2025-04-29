@@ -8,6 +8,7 @@ import { fetchProductByCategory } from '../services/productService'
 import HeroMain from '../assets/hero/hero-section-image.png'
 import FloatingLeft from '../assets/hero/floating-left-element.png'
 import FloatingRight from '../assets/hero/floating-right-element.png'
+import { ChevronRight } from 'lucide-react';
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -125,9 +126,14 @@ const Home = () => {
                     >
                         <Tabs tabs={TabContent} />
                     </motion.div>
+                    <motion.a
+                        href='store'
+                        initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
+                        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                        transition={{ duration: 1, ease: 'easeOut', delay: 1 }}
+                        className='flex items-center justify-center mt-8 text-lg font-medium text-primary-dark hover:text-primary duration-300 ease-out transition-all'>See More <ChevronRight /></motion.a>
                 </div>
             </section>
-
         </>
     )
 }
