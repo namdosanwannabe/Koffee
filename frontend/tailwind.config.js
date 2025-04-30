@@ -10,6 +10,7 @@ export default {
                 black: '#171717',
 
                 gray: {
+                    DEFAULT: '#E5E7EB',
                     light: '#707070'
                 },
 

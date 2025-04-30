@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import { replace, useLocation, useNavigate } from 'react-router-dom'
-import { fetchProductById } from '../services/productService';
+import { motion } from 'framer-motion'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { fetchProductById } from '../services/productService'
 
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, ChevronDown } from 'lucide-react';
+import CounterInput from '../components/CounterInput';
 
 const Product = () => {
     const location = useLocation();
     const navigate = useNavigate();
+
+    const [loading, setLoading] = useState(false);
+
     const [productId, setProductId] = useState("");
     const [product, setProduct] = useState(null);
-    const [loading, setLoading] = useState(false);
+
+    const [size, setSize] = useState("Grande");
+    const [quantity, setQuantity] = useState(1);
 
     const fetchProductDetails = async (id) => {
         try {
@@ -47,26 +54,89 @@ const Product = () => {
                 </button>
 
                 {loading ? (
-                    <div className="animate-pulse mt-6">
-                        <div className="h-64 bg-gray-200 rounded w-full mb-4" />
-                        <div className="h-6 bg-gray-200 rounded w-3/4 mb-2" />
-                        <div className="h-6 bg-gray-200 rounded w-1/2 mb-2" />
-                        <div className="h-4 bg-gray-200 rounded w-full" />
+                    <div className="flex animate-pulse gap-6 mt-6">
+                        <div className='flex-1'>
+                            <div className="h-80 bg-gray-200 rounded w-full mb-4" />
+                        </div>
+                        <div className='flex-1'>
+                            <div className="h-8 bg-gray-200 rounded w-3/4 mb-2" />
+                            <div className="h-8 bg-gray-200 rounded w-1/2 mb-2" />
+                            <div className="h-6 bg-gray-200 rounded w-full" />
+                        </div>
                     </div>
                 ) : (
-                    <div className='flex gap-6 mt-6'>
-                        <div className='flex-1'>
-                            <img src={product?.image_url} />
-                        </div>
-                        <div className='flex-1 flex flex-col'>
-                            <div className='flex flex-col gap-4'>
-                                <p className='text-[32px] font-bold text-primary-dark'>{product?.name}</p>
-                                <p className='text-5xl font-bold leading-none text-black'>₱{product?.price}.00</p>
-                                <p className='text-sm leading-normal text-gray-light'>{product?.description}</p>
+                    <>
+                        <div className='flex gap-6 mt-6'>
+                            <div className='flex-1'>
+                                <img src={product?.image_url} />
                             </div>
-                            <hr className='mt-6' />
+                            <div className='flex-1 flex flex-col'>
+                                <div className='flex flex-col gap-4'>
+                                    <p className='text-3xl font-bold text-primary-dark'>{product?.name}</p>
+                                    <p className='text-5xl font-bold leading-none text-black'>₱{product?.price}.00</p>
+                                    <p className='text-sm leading-normal text-gray-light'>{product?.description}</p>
+                                </div>
+
+                                <hr className='mt-6' />
+
+                                <div className='flex flex-col gap-4'>
+                                    {/* Size */}
+                                    <div className='flex flex-col gap-2 mt-6'>
+                                        <p className='text-black text-base font-normal'>Size:</p>
+                                        <div className="relative w-28">
+                                            <select
+                                                className="w-full border border-gray-300 py-2 px-3 rounded-md appearance-none bg-white text-gray-light outline-primary"
+                                                value={size}
+                                                onChange={(e) => setSize(e.target.value)}
+                                            >
+                                                {["Grande", "Tall"].map((s, i) => (
+                                                    <option key={i}>{s}</option>
+                                                ))}
+                                            </select>
+                                            <div className="pointer-events-none absolute inset-y-0 right-2 flex items-center">
+                                                <ChevronDown size={18} />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Quantity */}
+                                    <div className='flex flex-col gap-2'>
+                                        <p className='text-black text-base font-normal'>Quantity:</p>
+                                        <CounterInput value={quantity} onChange={setQuantity} />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+
+                        {/* Ingredients */}
+                        <div className='flex flex-col gap-6'>
+                            <p className='font-bold mt-24 text-black text-2xl xs:text-[32px]'>
+                                Ingredients
+                            </p>
+                            <div className='border border-gray rounded-md'>
+                                <table className="w-full overflow-hidden text-black">
+                                    <tbody>
+                                        {product?.ingredients.length > 0 ? (
+                                            product.ingredients.map((ingredient, index) => (
+                                                <tr key={index} className="border-b border-gray last-of-type:border-b-0">
+                                                    <td className="px-4 py-2 border-r border-gray font-bold w-32">
+                                                        Step {index + 1}
+                                                    </td>
+                                                    <td className="px-4 py-2">{ingredient}</td>
+                                                </tr>
+                                            ))
+                                        ) : (
+                                            <tr>
+                                                <td colSpan="2" className="px-4 py-2 text-center text-gray-500 italic">
+                                                    No Ingredients
+                                                </td>
+                                            </tr>
+                                        )}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </>
                 )}
             </div>
         </div>
