@@ -13,7 +13,7 @@ const app = express();
 //Middleware
 app.use(express.json());
 app.use(cors({
-    origin: [process.env.PORT, `http://localhost:5173`,],
+    origin: [process.env.PORT, `http://localhost:5173`, 'https://koffee-five.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { motion } from 'framer-motion'
 import Logo from '../assets/logo/koffee-logo.png'
 import { ShoppingCart } from 'lucide-react';
@@ -40,8 +40,8 @@ const Header = () => {
                     </a>
                     <nav className='flex gap-8 font-medium text-based text-black leading-relaxed'>
                         <a href='/#explore'>Explore</a>
-                        <a href='store'>Store</a>
-                        <a href='about'>About Us</a>
+                        <Link to='/store'>Store</Link>
+                        <Link to='/about'>About Us</Link>
                         <button>
                             <ShoppingCart size={24} fill='#006241' className='text-primary' />
                         </button>
