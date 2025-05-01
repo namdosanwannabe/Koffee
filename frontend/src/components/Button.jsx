@@ -9,7 +9,7 @@ const Button = ({
     onClick,
 }) => {
     const getBorderRadius = (type) => {
-        return type === "rounded" ? "rounded-full" : "rounded-lg";
+        return type === "rounded" ? "rounded-full" : "rounded-[10px]";
     };
 
     const getVariant = (variant) => {

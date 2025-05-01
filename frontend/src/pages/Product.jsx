@@ -3,8 +3,10 @@ import { motion } from 'framer-motion'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { fetchProductById } from '../services/productService'
 
-import { ChevronLeft, ChevronDown } from 'lucide-react';
+import { ChevronLeft, ChevronDown, ShoppingBasket } from 'lucide-react';
+
 import CounterInput from '../components/CounterInput';
+import Button from '../components/Button';
 
 const Product = () => {
     const location = useLocation();
@@ -30,7 +32,7 @@ const Product = () => {
         finally {
             setTimeout(() => {
                 setLoading(false);
-            }, 1000);
+            }, 1500);
         }
     };
 
@@ -54,16 +56,28 @@ const Product = () => {
                 </button>
 
                 {loading ? (
-                    <div className="flex animate-pulse gap-6 mt-6">
-                        <div className='flex-1'>
-                            <div className="h-80 bg-gray-200 rounded w-full mb-4" />
+                    <>
+
+                        <div className="flex animate-pulse gap-6 mt-6">
+                            <div className='flex-1'>
+                                <div className="h-80 bg-gray-200 rounded w-full mb-4" />
+                            </div>
+                            <div className='flex-1'>
+                                <div className="h-8 bg-gray-200 rounded w-3/4 mb-2" />
+                                <div className="h-8 bg-gray-200 rounded w-1/2 mb-2" />
+                                <div className="h-6 bg-gray-200 rounded w-full mb-2" />
+                                <div className="h-6 bg-gray-200 rounded w-full" />
+
+                                <div className="h-6 bg-gray-200 rounded w-1/4 mt-8 mb-2" />
+                                <div className="h-6 bg-gray-200 rounded w-1/4 mb-2" />
+                                <div className="h-8 bg-gray-200 rounded w-full" />
+                            </div>
                         </div>
-                        <div className='flex-1'>
-                            <div className="h-8 bg-gray-200 rounded w-3/4 mb-2" />
-                            <div className="h-8 bg-gray-200 rounded w-1/2 mb-2" />
-                            <div className="h-6 bg-gray-200 rounded w-full" />
+                        <div className="flex flex-col animate-pulse gap-4 mt-8">
+                            <div className="h-8 bg-gray-200 rounded w-full" />
+                            <div className="h-8 bg-gray-200 rounded w-full" />
                         </div>
-                    </div>
+                    </>
                 ) : (
                     <>
                         <div className='flex gap-6 mt-6'>
@@ -105,6 +119,11 @@ const Product = () => {
                                         <CounterInput value={quantity} onChange={setQuantity} />
                                     </div>
                                 </div>
+
+                                <Button className='w-full flex justify-center gap-4 font-bold mt-8' type='squared'>
+                                    Add to cart
+                                    <ShoppingBasket />
+                                </Button>
                             </div>
                         </div>
 

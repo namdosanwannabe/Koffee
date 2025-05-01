@@ -83,8 +83,8 @@ const About = () => {
             <motion.img
                 src={Image}
                 alt='Coffee Beans'
-                initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
-                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                initial={{ opacity: 0, filter: 'blur(10px)' }}
+                whileInView={{ opacity: 1, filter: 'blur(0px)' }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 1, ease: 'easeOut', delay: 0.8 }}
             />
