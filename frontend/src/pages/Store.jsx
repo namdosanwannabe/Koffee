@@ -50,7 +50,7 @@ const Store = () => {
                 </motion.h1>
                 <motion.div
                     initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
-                    whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                     transition={{ duration: 1, ease: 'easeOut', delay: 0.6 }}
                     viewport={{ once: true }}
                     className='mt-8 mb-16 xs:mt-12 xs:mb-24'

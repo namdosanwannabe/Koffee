@@ -9,7 +9,7 @@ const About = () => {
             <div className='mx-auto max-w-2xl pt-8 xs:pt-12'>
                 <motion.div
                     initial="hidden"
-                    whileInView="visible"
+                    animate="visible"
                     viewport={{ once: true, amount: 0.2 }}
                     variants={{
                         hidden: { opacity: 0, y: 50, filter: 'blur(10px)' },
@@ -84,7 +84,7 @@ const About = () => {
                 src={Image}
                 alt='Coffee Beans'
                 initial={{ opacity: 0, filter: 'blur(10px)' }}
-                whileInView={{ opacity: 1, filter: 'blur(0px)' }}
+                animate={{ opacity: 1, filter: 'blur(0px)' }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 1, ease: 'easeOut', delay: 0.8 }}
             />

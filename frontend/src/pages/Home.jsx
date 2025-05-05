@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Button from '../components/Button'
 import Tabs from '../components/Tabs'
 import ProductContainer from '../components/ProductContainer'
@@ -126,12 +127,16 @@ const Home = () => {
                     >
                         <Tabs tabs={TabContent} />
                     </motion.div>
-                    <motion.a
-                        href='store'
+                    <motion.p
                         initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
                         animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                         transition={{ duration: 1, ease: 'easeOut', delay: 1 }}
-                        className='flex items-center justify-center mt-8 text-lg font-medium text-primary-dark hover:text-primary duration-300 ease-out transition-all'>See More <ChevronRight /></motion.a>
+                        className=' mt-8 text-lg font-medium text-primary-dark hover:text-primary duration-300 ease-out transition-all'>
+                        <Link to='/store' className='flex items-center justify-center'>
+                            See More
+                            <ChevronRight />
+                        </Link>
+                    </motion.p>
                 </div>
             </section>
         </>

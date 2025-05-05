@@ -42,9 +42,9 @@ const Header = () => {
                         <a href='/#explore'>Explore</a>
                         <Link to='/store'>Store</Link>
                         <Link to='/about'>About Us</Link>
-                        <button>
+                        <Link to='/cart'>
                             <ShoppingCart size={24} fill='#006241' className='text-primary' />
-                        </button>
+                        </Link>
                     </nav>
                 </div>
             </motion.div>

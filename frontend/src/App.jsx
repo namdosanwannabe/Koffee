@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Store from './pages/Store';
 import About from './pages/About';
 import Product from './pages/Product';
+import Cart from './pages/Cart';
 
 const NotFound = () => {
     return (
@@ -37,6 +38,11 @@ function App() {
                 <Route path="/product" element={
                     <AppLayout>
                         <Product />
+                    </AppLayout>
+                } />
+                <Route path="/cart" element={
+                    <AppLayout>
+                        <Cart />
                     </AppLayout>
                 } />
 

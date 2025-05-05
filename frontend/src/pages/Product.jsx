@@ -7,14 +7,16 @@ import { ChevronLeft, ChevronDown, ShoppingBasket } from 'lucide-react';
 
 import CounterInput from '../components/CounterInput';
 import Button from '../components/Button';
+import { useCart } from '../contexts/CartContext';
 
 const Product = () => {
+
+    const { addProduct } = useCart();
     const location = useLocation();
     const navigate = useNavigate();
 
     const [loading, setLoading] = useState(false);
 
-    const [productId, setProductId] = useState("");
     const [product, setProduct] = useState(null);
 
     const [size, setSize] = useState("Grande");
@@ -24,7 +26,6 @@ const Product = () => {
         try {
             const data = await fetchProductById(id);
             setProduct(data);
-            setProductId(id);
         } catch (error) {
             setLoading(false);
             console.error("Error fetching product details:", error);
@@ -35,6 +36,11 @@ const Product = () => {
             }, 1500);
         }
     };
+
+    const handleAddToCart = () => {
+        const newProduct = { ...product, size, quantity };
+        addProduct(newProduct);
+    }
 
     useEffect(() => {
         const id = location.state?.product_id ?? "";
@@ -57,7 +63,6 @@ const Product = () => {
 
                 {loading ? (
                     <>
-
                         <div className="flex animate-pulse gap-6 mt-6">
                             <div className='flex-1'>
                                 <div className="h-80 bg-gray-200 rounded w-full mb-4" />
@@ -82,7 +87,7 @@ const Product = () => {
                     <>
                         <div className='flex gap-6 mt-6'>
                             <div className='flex-1'>
-                                <img src={product?.image_url} />
+                                <img src={product?.image_url} alt={product?.name || "Product image"} />
                             </div>
                             <div className='flex-1 flex flex-col'>
                                 <div className='flex flex-col gap-4'>
@@ -120,7 +125,10 @@ const Product = () => {
                                     </div>
                                 </div>
 
-                                <Button className='w-full flex justify-center gap-4 font-bold mt-8' type='squared'>
+                                <Button
+                                    className='w-full flex items-center justify-center gap-4 font-bold mt-8'
+                                    type='squared'
+                                    onClick={() => handleAddToCart()} >
                                     Add to cart
                                     <ShoppingBasket />
                                 </Button>
