@@ -38,7 +38,7 @@ const Product = () => {
     };
 
     const handleAddToCart = () => {
-        const newProduct = { ...product, size, quantity };
+        const newProduct = { ...product, size, quantity, total: product?.price };
         addProduct(newProduct);
     }
 
