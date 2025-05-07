@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { fetchProductById } from '../services/productService'
 
-import { ChevronLeft, ChevronDown, ShoppingBasket } from 'lucide-react';
+import { ChevronLeft, ChevronDown, ShoppingBasket, CircleCheck } from 'lucide-react';
 
 import CounterInput from '../components/CounterInput';
 import Button from '../components/Button';
@@ -16,6 +16,7 @@ const Product = () => {
     const navigate = useNavigate();
 
     const [loading, setLoading] = useState(false);
+    const [isAddingToCart, setIsAddingToCart] = useState(false);
 
     const [product, setProduct] = useState(null);
 
@@ -38,8 +39,17 @@ const Product = () => {
     };
 
     const handleAddToCart = () => {
-        const newProduct = { ...product, size, quantity, total: product?.price };
+        const newProduct = {
+            ...product, size, quantity, total: (product?.price ?? 0) * quantity
+        };
         addProduct(newProduct);
+        setIsAddingToCart(true);
+
+        const timer = setTimeout(() => {
+            setIsAddingToCart(false);
+        }, 1000);
+
+        return () => clearTimeout(timer);
     }
 
     useEffect(() => {
@@ -126,11 +136,38 @@ const Product = () => {
                                 </div>
 
                                 <Button
-                                    className='w-full flex items-center justify-center gap-4 font-bold mt-8'
+                                    className='w-full font-bold flex items-center justify-center gap-4 mt-8'
                                     type='squared'
                                     onClick={() => handleAddToCart()} >
-                                    Add to cart
-                                    <ShoppingBasket />
+                                    {
+                                        <AnimatePresence mode="wait">
+                                            {isAddingToCart ? (
+                                                <motion.div
+                                                    key="check"
+                                                    initial={{ opacity: 0, scale: 0.8 }}
+                                                    animate={{ opacity: 1, scale: 1 }}
+                                                    exit={{ opacity: 0, scale: 0.8 }}
+                                                    transition={{ duration: 0.3 }}
+                                                >
+                                                    <CircleCheck />
+                                                </motion.div>
+                                            ) : (
+                                                <motion.div
+                                                    className='flex items-center justify-center gap-3'
+                                                    key="add-to-cart"
+                                                    initial={{ opacity: 0, scale: 0.8 }}
+                                                    animate={{ opacity: 1, scale: 1 }}
+                                                    exit={{ opacity: 0, scale: 0.8 }}
+                                                    transition={{ duration: 0.3 }}
+                                                >
+                                                    <>
+                                                        Add to cart
+                                                        <ShoppingBasket />
+                                                    </>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    }
                                 </Button>
                             </div>
                         </div>

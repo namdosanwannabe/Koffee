@@ -34,8 +34,8 @@ const Cart = () => {
                                     transition={{ duration: 1, ease: 'easeOut', }}
                                     viewport={{ once: true }}
                                 >
-                                    {products.map((product) => (
-                                        <CartItem key={product?._id} product={product} />
+                                    {products.map((product, index) => (
+                                        <CartItem key={product?._id + index} product={product} />
                                     ))}
                                 </motion.div>
 
