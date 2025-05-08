@@ -19,6 +19,14 @@ export function CartProvider({ children }) {
         return products.find((p) => p._id === product._id && p.size === product.size);
     };
 
+    const getProductQuantity = (product) => {
+        return findProductInCart(product)?.quantity ?? 0;
+    };
+
+    const addNewProduct = (product) => {
+        return [...products, product];
+    };
+
     const updateProductQuantity = (product, existingProduct) => {
         return products.map((p) => {
             if (p._id === existingProduct._id && p.size === existingProduct.size) {
@@ -26,15 +34,20 @@ export function CartProvider({ children }) {
                 return {
                     ...p,
                     quantity: newQuantity,
-                    total: newQuantity * p.price
+                    total: newQuantity * p.price,
                 };
             }
             return p;
         });
     };
 
-    const addNewProduct = (product) => {
-        return [...products, product];
+    const updatePrice = (product, value) => {
+        const updatedProducts = products.map((p) =>
+            p._id === product._id && p.size === product.size
+                ? { ...p, quantity: value, total: value * p.price }
+                : p
+        );
+        setProducts(updatedProducts);
     };
 
     const addProduct = (product) => {
@@ -47,28 +60,17 @@ export function CartProvider({ children }) {
         setProducts(updatedProducts);
     };
 
-    const updatePrice = (product, value) => {
-        const updatedProducts = products.map((p) =>
-            p._id === product._id && p.size === product.size
-                ? {
-                    ...p,
-                    quantity: value,
-                    total: value * p.price
-                }
-                : p
-        );
+    const removeProduct = (product) => {
+        const updatedProducts = products
+            .filter((p) => !(p._id === product._id && p.size === product.size));
 
         setProducts(updatedProducts);
-    };
-
-    const getProductQuantity = (product) => {
-        return findProductInCart(product)?.quantity ?? 0;
-    };
+    }
 
     const totalPrice = products.reduce((acc, product) => acc + product.total, 0);
 
     return (
-        <CartContext.Provider value={{ products, addProduct, updatePrice, totalPrice, getProductQuantity }}>
+        <CartContext.Provider value={{ products, addProduct, updatePrice, removeProduct, totalPrice, getProductQuantity }}>
             {children}
         </CartContext.Provider>
     )

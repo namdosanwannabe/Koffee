@@ -5,7 +5,7 @@ import { useCart } from '../contexts/CartContext';
 
 const CartItem = ({ product }) => {
 
-    const { updatePrice, getProductQuantity } = useCart();
+    const { updatePrice, getProductQuantity, removeProduct } = useCart();
 
     return (
         <div className='p-3 flex justify-between items-center bg-white hover:bg-gray-100 transition-all duration-300 ease-out rounded select-none'>
@@ -20,7 +20,9 @@ const CartItem = ({ product }) => {
                 <p className='font-normal text-black leading-relaxed'>{`₱${product?.price}.00`}</p>
                 <CounterInput value={getProductQuantity(product)} onChange={(value) => updatePrice(product, value)} />
                 <p className='font-bold text-lg text-black leading-relaxed'>{`₱${product?.total}.00`}</p>
-                <X size={24} className='text-gray-light cursor-pointer mr-3' />
+                <button type='button' onClick={() => removeProduct(product)}>
+                    <X size={24} className='text-gray-light cursor-pointer mr-3' />
+                </button>
             </div>
         </div>
     )
