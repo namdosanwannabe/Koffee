@@ -39,8 +39,15 @@ const Product = () => {
     };
 
     const handleAddToCart = () => {
+
+        const calculatedPrice = size === "Grande" ? (product?.price * 1.2) : (product?.price ?? 0);
+
         const newProduct = {
-            ...product, size, quantity, total: (product?.price ?? 0) * quantity
+            ...product,
+            size,
+            quantity,
+            price: calculatedPrice,
+            total: calculatedPrice * quantity
         };
         addProduct(newProduct);
         setIsAddingToCart(true);
