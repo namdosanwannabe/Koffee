@@ -6,6 +6,7 @@ import Store from './pages/Store';
 import About from './pages/About';
 import Product from './pages/Product';
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 
 const NotFound = () => {
     return (
@@ -43,6 +44,11 @@ function App() {
                 <Route path="/cart" element={
                     <AppLayout>
                         <Cart />
+                    </AppLayout>
+                } />
+                <Route path="/checkout" element={
+                    <AppLayout>
+                        <Checkout />
                     </AppLayout>
                 } />
 

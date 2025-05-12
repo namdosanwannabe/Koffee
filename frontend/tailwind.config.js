@@ -11,7 +11,8 @@ export default {
 
                 gray: {
                     DEFAULT: '#E5E7EB',
-                    light: '#707070'
+                    light: '#707070',
+                    lighter: '#ECECEC'
                 },
 
                 primary: {

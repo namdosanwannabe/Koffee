@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import { ShoppingCart, ShoppingBag } from 'lucide-react';
@@ -10,6 +11,7 @@ import CartItem from '../components/CartItem';
 const Cart = () => {
 
     const { products, totalPrice } = useCart();
+    const navigate = useNavigate();
 
     return (
         <div className='mx-auto max-w-4xl pt-8 xs:pt-12'>
@@ -48,7 +50,7 @@ const Cart = () => {
                                             {`₱${totalPrice}.00`}
                                         </p>
                                     </div>
-                                    <Button className='flex items-center gap-3 font-bold' variant='filled' type='squared'>
+                                    <Button className='flex items-center gap-3 font-bold' variant='filled' type='squared' onClick={() => navigate('/checkout')}>
                                         Checkout
                                         <ShoppingBag />
                                     </Button>
