@@ -10,8 +10,21 @@ import CartItem from '../components/CartItem';
 
 const Cart = () => {
 
-    const { products, totalPrice } = useCart();
+    const { products, totalPrice, totalQuantity } = useCart();
+    const [loading, setLoading] = useState(false);
+
     const navigate = useNavigate();
+
+    const handleCheckout = () => {
+
+        setLoading(true);
+        const cartData = { totalPrice, totalQuantity };
+
+        setTimeout(() => {
+            setLoading(false);
+            navigate('/checkout', { state: cartData });
+        }, 2500);
+    }
 
     return (
         <div className='mx-auto max-w-4xl pt-8 xs:pt-12'>
@@ -32,7 +45,7 @@ const Cart = () => {
                             <div className='flex flex-col gap-6'>
                                 <motion.div
                                     initial={{ opacity: 0, filter: 'blur(10px)' }}
-                                    whileInView={{ opacity: 1, filter: 'blur(0px)' }}
+                                    animate={{ opacity: 1, filter: 'blur(0px)' }}
                                     transition={{ duration: 1, ease: 'easeOut', }}
                                     viewport={{ once: true }}
                                 >
@@ -50,16 +63,22 @@ const Cart = () => {
                                             {`₱${totalPrice}.00`}
                                         </p>
                                     </div>
-                                    <Button className='flex items-center gap-3 font-bold' variant='filled' type='squared' onClick={() => navigate('/checkout')}>
-                                        Checkout
-                                        <ShoppingBag />
+                                    <Button className='min-w-44 flex items-center justify-center gap-3 font-bold' variant='filled' type='squared' onClick={() => handleCheckout()}>
+                                        {loading ? (
+                                            <div className="w-6 h-6 border-[3px] border-t-transparent border-white rounded-full animate-spin"></div>
+                                        ) : (
+                                            <>
+                                                Checkout
+                                                <ShoppingBag />
+                                            </>
+                                        )}
                                     </Button>
                                 </div>
                             </div>
                         ) : (
                             <motion.div
                                 initial={{ opacity: 0, filter: 'blur(10px)' }}
-                                whileInView={{ opacity: 1, filter: 'blur(0px)' }}
+                                animate={{ opacity: 1, filter: 'blur(0px)' }}
                                 transition={{ duration: 1, ease: 'easeOut', }}
                                 viewport={{ once: true }}
                                 className='flex flex-col justify-center items-center gap-8 py-12 border-dashed border-2 rounded-md'
