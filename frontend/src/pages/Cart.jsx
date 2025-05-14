@@ -47,7 +47,6 @@ const Cart = () => {
                                     initial={{ opacity: 0, filter: 'blur(10px)' }}
                                     animate={{ opacity: 1, filter: 'blur(0px)' }}
                                     transition={{ duration: 1, ease: 'easeOut', }}
-                                    viewport={{ once: true }}
                                 >
                                     {products.map((product, index) => (
                                         <CartItem key={product?._id + index} product={product} />
@@ -56,7 +55,10 @@ const Cart = () => {
 
                                 <hr className='my-3' />
 
-                                <div className='flex items-center justify-between'>
+                                <motion.div
+                                    initial={{ opacity: 0, filter: 'blur(10px)' }}
+                                    animate={{ opacity: 1, filter: 'blur(0px)' }}
+                                    transition={{ duration: 1, ease: 'easeOut', }} className='flex items-center justify-between'>
                                     <div className='flex flex-col'>
                                         <p className='font-normal text-sm text-black'>Total:</p>
                                         <p className='font-bold text-2xl text-black leading-relaxed'>
@@ -73,7 +75,7 @@ const Cart = () => {
                                             </>
                                         )}
                                     </Button>
-                                </div>
+                                </motion.div>
                             </div>
                         ) : (
                             <motion.div

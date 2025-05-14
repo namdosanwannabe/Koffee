@@ -3,11 +3,14 @@ import { useLocation, useNavigate, Navigate } from 'react-router-dom'
 import { CircleCheckBig, ShoppingCart } from 'lucide-react'
 import Logo from '../assets/logo/koffee-logo.png'
 import Button from '../components/Button'
+import { useCart } from '../contexts/CartContext'
 
 const Checkout = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
+
+    const { clearCart } = useCart();
 
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalQuantity, setTotalQuantity] = useState(0);
@@ -21,9 +24,9 @@ const Checkout = () => {
             return;
         }
 
+        clearCart();
         setTotalPrice(totalPrice);
         setTotalQuantity(totalQuantity);
-
     }, [location, navigate]);
 
     return (

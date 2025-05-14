@@ -145,7 +145,8 @@ const Product = () => {
                                 <Button
                                     className='w-full font-bold flex items-center justify-center gap-4 mt-8'
                                     type='squared'
-                                    onClick={() => handleAddToCart()} >
+                                    onClick={() => handleAddToCart()}
+                                    disabled={isAddingToCart}>
                                     {
                                         <AnimatePresence mode="wait">
                                             {isAddingToCart ? (

@@ -7,6 +7,7 @@ const Button = ({
     variant = "filled",
     className = "font-semibold leading-normal",
     onClick,
+    disabled
 }) => {
     const getBorderRadius = (type) => {
         return type === "rounded" ? "rounded-full" : "rounded-[10px]";
@@ -19,6 +20,7 @@ const Button = ({
     return (
         <button
             type="button"
+            disabled={disabled}
             className={`${className} ${getVariant(variant)} ${getBorderRadius(type)} 
             p-4 md:py-4 md:px-6 lg:py-4 lg:px-8 w-fit text-nowrap text-xs sm:text-sm md:text-base`}
             onClick={onClick}
@@ -33,6 +35,7 @@ Button.propTypes = {
     type: PropTypes.oneOf(["rounded", "squared"]),
     variant: PropTypes.oneOf(["filled", "outlined"]),
     className: PropTypes.string,
+    disabled: PropTypes.bool,
     onClick: PropTypes.func,
 };
 

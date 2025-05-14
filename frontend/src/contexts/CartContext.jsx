@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from 'react'
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const CartContext = createContext();
 
@@ -13,7 +14,7 @@ export function useCart() {
 }
 
 export function CartProvider({ children }) {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useLocalStorage([], 'items');
 
     const findProductInCart = (product) => {
         return products.find((p) => p._id === product._id && p.size === product.size);
