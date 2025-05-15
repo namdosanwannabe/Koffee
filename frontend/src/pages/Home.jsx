@@ -77,13 +77,18 @@ const Home = () => {
                             transition={{ duration: 1, ease: 'easeOut', delay: 0.4 }}
                             className='flex sm:flex-row gap-4 sm:gap-8 mt-8 justify-center md:justify-start'
                         >
-                            <Button className='flex items-center justify-center gap-3'>
-                                Shop Beans & Brews
-                                <svg width="7" height="14" viewBox="0 0 7 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1.5 12.8334L5.83061 7.78099C6.2158 7.3316 6.2158 6.66848 5.83061 6.21909L1.5 1.16671" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-                                </svg>
-                            </Button>
-                            <Button variant='outlined'>Learn More</Button>
+                            <Link to='/store'>
+                                <Button className='flex items-center justify-center gap-3'>
+                                    Shop Beans & Brews
+                                    <svg width="7" height="14" viewBox="0 0 7 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1.5 12.8334L5.83061 7.78099C6.2158 7.3316 6.2158 6.66848 5.83061 6.21909L1.5 1.16671" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                                    </svg>
+                                </Button>
+                            </Link>
+
+                            <Link to='/about'>
+                                <Button variant='outlined'>Learn More</Button>
+                            </Link>
                         </motion.div>
                     </div>
 
