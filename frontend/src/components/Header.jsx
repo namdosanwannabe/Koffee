@@ -3,9 +3,11 @@ import { useLocation, Link } from 'react-router-dom';
 import { motion } from 'framer-motion'
 import Logo from '../assets/logo/koffee-logo.png'
 import { ShoppingCart } from 'lucide-react';
+import { useCart } from '../contexts/CartContext';
 
 const Header = () => {
     const location = useLocation();
+    const { products } = useCart();
 
     useEffect(() => {
         const hash = location.hash;
@@ -38,12 +40,19 @@ const Header = () => {
                         <img src={Logo} alt='Koffee Logo' className='w-12 h-12' />
                         <p className='text-black text-2xl font-bold '>Koffee</p>
                     </a>
-                    <nav className='flex gap-8 font-medium text-based text-black leading-relaxed'>
+                    <nav className='flex gap-8 items-center font-medium text-based text-black leading-relaxed'>
                         <a href='/#explore'>Explore</a>
                         <Link to='/store'>Store</Link>
                         <Link to='/about'>About Us</Link>
-                        <Link to='/cart'>
+                        <Link
+                            to='/cart'
+                            className='py-3 px-5 flex items-center justify-center gap-3 rounded-full transition-all duration-300 ease hover:bg-gray-light/15'>
                             <ShoppingCart size={24} fill='#006241' className='text-primary' />
+                            {
+                                products?.length > 0 && (
+                                    <span className='py-1 px-[6px] text-sm text-white bg-primary rounded-sm'>{products?.length}</span>
+                                )
+                            }
                         </Link>
                     </nav>
                 </div>
