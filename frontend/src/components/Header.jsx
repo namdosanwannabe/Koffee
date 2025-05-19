@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { useLocation, Link } from 'react-router-dom';
 import { motion } from 'framer-motion'
 import Logo from '../assets/logo/koffee-logo.png'
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Menu } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
 
-const Header = () => {
+const Header = ({ onToggle }) => {
     const location = useLocation();
     const { products } = useCart();
 
@@ -35,7 +35,7 @@ const Header = () => {
                 animate={{ opacity: 1, filter: "blur(0px)" }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className='mx-auto max-w-7xl h-24'>
-                <div className='h-full flex justify-between items-center mx-8'>
+                <div className='h-full justify-between items-center mx-8 hidden md:flex'>
                     <a href='/' className='flex items-center gap-3'>
                         <img src={Logo} alt='Koffee Logo' className='w-12 h-12' />
                         <p className='text-black text-2xl font-bold '>Koffee</p>
@@ -55,6 +55,19 @@ const Header = () => {
                             }
                         </Link>
                     </nav>
+                </div>
+                <div className='h-full mx-8 flex justify-between items-center md:hidden'>
+                    <Menu size={32} className='text-black cursor-pointer' onClick={onToggle} />
+                    <Link
+                        to='/cart'
+                        className='py-3 px-5 flex items-center justify-center gap-3 rounded-full transition-all duration-300 ease hover:bg-gray-light/15'>
+                        <ShoppingCart size={24} fill='#006241' className='text-primary' />
+                        {
+                            products?.length > 0 && (
+                                <span className='py-1 px-[6px] text-sm text-white bg-primary rounded-sm'>{products?.length}</span>
+                            )
+                        }
+                    </Link>
                 </div>
             </motion.div>
         </header>
