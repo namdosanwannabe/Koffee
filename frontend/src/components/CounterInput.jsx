@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Minus, Plus } from 'lucide-react';
 
-const CounterInput = ({ value = 1, onChange }) => {
+const CounterInput = ({ value = 1, onChange, className }) => {
 
     const handleDecrease = () => {
         const newValue = value > 1 ? value - 1 : 1;
@@ -14,7 +14,7 @@ const CounterInput = ({ value = 1, onChange }) => {
     };
 
     return (
-        <div className='w-28 flex justify-between gap-2 border border-gray-300 py-2 px-3 rounded-md bg-white outline-primary'>
+        <div className={`w-28 flex justify-between gap-2 border border-gray-300 py-2 px-3 rounded-md bg-white outline-primary ${className}`}>
             <button className={`flex justify-center items-center flex-1 ${value === 1 && 'cursor-not-allowed'}`} onClick={handleDecrease}>
                 <Minus size={18} className='text-black' />
             </button>

@@ -44,6 +44,7 @@ const Cart = () => {
                         ? (
                             <div className='flex flex-col gap-6'>
                                 <motion.div
+                                    className='flex flex-col gap-4 sm:gap-0'
                                     initial={{ opacity: 0, filter: 'blur(10px)' }}
                                     animate={{ opacity: 1, filter: 'blur(0px)' }}
                                     transition={{ duration: 1, ease: 'easeOut', }}

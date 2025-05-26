@@ -34,7 +34,7 @@ const Header = ({ onToggle }) => {
                 initial={{ opacity: 0, filter: "blur(10px)" }}
                 animate={{ opacity: 1, filter: "blur(0px)" }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className='mx-auto max-w-7xl h-24'>
+                className='mx-auto max-w-7xl h-20 xs:h-24'>
                 <div className='h-full justify-between items-center mx-8 hidden md:flex'>
                     <a href='/' className='flex items-center gap-3'>
                         <img src={Logo} alt='Koffee Logo' className='w-12 h-12' />

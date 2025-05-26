@@ -22,7 +22,7 @@ const Button = ({
             type="button"
             disabled={disabled}
             className={`${className} ${getVariant(variant)} ${getBorderRadius(type)} 
-            p-4 md:py-4 md:px-6 lg:py-4 lg:px-8 w-fit text-nowrap text-xs sm:text-sm md:text-base`}
+            p-4 md:py-4 md:px-6 lg:py-4 lg:px-8 w-fit text-nowrap text-sm md:text-base`}
             onClick={onClick}
         >
             {children}

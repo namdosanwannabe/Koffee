@@ -37,7 +37,7 @@ const AppLayout = ({ children }) => {
         <div className="relative">
             <div>
                 <div
-                    className={`fixed top-0 h-full w-80 bg-white z-[100]
+                    className={`fixed top-0 h-full w-72 xs:w-80 bg-white z-[100]
             transition-transform duration-300 ease-out 
             ${active ? 'left-0' : '-translate-x-full'}`}
                 >
@@ -57,7 +57,7 @@ const AppLayout = ({ children }) => {
 
             <div>
                 <Header onToggle={handleToggle} />
-                <div className="mt-24">
+                <div className="mt-20 xs:mt-24">
                     {children}
                 </div>
                 <Footer />

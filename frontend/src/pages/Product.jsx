@@ -80,7 +80,7 @@ const Product = () => {
 
                 {loading ? (
                     <>
-                        <div className="flex animate-pulse gap-6 mt-6">
+                        <div className="flex flex-col sm:flex-row animate-pulse gap-6 mt-6">
                             <div className='flex-1'>
                                 <div className="h-80 bg-gray-200 rounded w-full mb-4" />
                             </div>
@@ -102,7 +102,7 @@ const Product = () => {
                     </>
                 ) : (
                     <>
-                        <div className='flex gap-6 mt-6'>
+                        <div className='flex flex-col sm:flex-row gap-6 mt-6'>
                             <div className='flex-1'>
                                 <img src={product?.image_url} alt={product?.name || "Product image"} />
                             </div>
@@ -182,7 +182,7 @@ const Product = () => {
 
                         {/* Ingredients */}
                         <div className='flex flex-col gap-6'>
-                            <p className='font-bold mt-24 text-black text-2xl xs:text-[32px]'>
+                            <p className='font-bold mt-14 sm:mt-24 text-black text-2xl xs:text-[32px]'>
                                 Ingredients
                             </p>
                             <div className='border border-gray rounded-md'>
